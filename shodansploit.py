@@ -4,14 +4,15 @@
 import requests
 import json
 import os
+import signal
 
 # shodansploit v1.0.0
 
-searchploit_txt = """      
-      _               _                       _       _ _   
-  ___| |__   ___   __| | __ _ _ __  ___ _ __ | | ___ (_) |_ 
+searchploit_txt = """
+      _               _                       _       _ _
+  ___| |__   ___   __| | __ _ _ __  ___ _ __ | | ___ (_) |_
  / __| '_ \ / _ \ / _` |/ _` | '_ \/ __| '_ \| |/ _ \| | __|
- \__ \ | | | (_) | (_| | (_| | | | \__ \ |_) | | (_) | | |_ 
+ \__ \ | | | (_) | (_| | (_| | | | \__ \ |_) | | (_) | | |_
  |___/_| |_|\___/ \__,_|\__,_|_| |_|___/ .__/|_|\___/|_|\__|
                                        |_|            v1.0.0
 	Author : Ismail Tasdelen
@@ -21,11 +22,11 @@ searchploit_txt = """
 """
 
 shodansploit_menu_txt = """
-[1] GET > /shodan/host/{ip} 
+[1] GET > /shodan/host/{ip}
 [2] GET > /shodan/host/count
-[3] GET > /shodan/host/search 
-[4] GET > /shodan/host/search/tokens 
-[5] GET > /shodan/ports 
+[3] GET > /shodan/host/search
+[4] GET > /shodan/host/search/tokens
+[5] GET > /shodan/ports
 
 [6] GET > /shodan/exploit/author
 [7] GET > /shodan/exploit/cve
@@ -40,23 +41,31 @@ shodansploit_menu_txt = """
 [16] GET > /shodan/exploit/port
 
 [17] GET > /dns/resolve
-[18] GET > /dns/reverse 
+[18] GET > /dns/reverse
 [19] GET > /labs/honeyscore/{ip}
 
-[20] GET > /account/profile 
-[21] GET > /tools/myip 
+[20] GET > /account/profile
+[21] GET > /tools/myip
 [22] GET > /tools/httpheaders
-[23] GET > /api-info 
+[23] GET > /api-info
 
 [24] Exit
 """
 
-print searchploit_txt
-print shodansploit_menu_txt
+if os.path.exists("./api.txt") and os.path.getsize("./api.txt") > 0:
+    with open('api.txt', 'r') as file:
+        shodan_api=file.readline().rstrip('\n')
+else:
+    file = open('api.txt', 'w')
+    shodan_api = raw_input('[*] Please enter a valid Shodan.io API Key: ')
+    file.write(shodan_api)
+    print('[~] File written: ./api.txt')
+    file.close()
 
-# Shodan API-KEY
-shodan_api = "SHODAN_API_KEY"
-	
+def signal_handler(signal, frame):
+    print("\nExiting...\n")
+    exit()
+
 def shodan_host_ip():
 	host_ip = raw_input("Shodan Host Search : ")
 	url = "https://api.shodan.io/shodan/host/"+ host_ip +"?key=" + shodan_api
@@ -239,6 +248,9 @@ def shodan_exploit_port():
 def shodansploit_exit():
 	exit()
 
+def pause():
+    programPause = raw_input("\nPress the <ENTER> key to continue...")
+
 # Author : Ismail Tasdelen
 # GitHub : https://github.com/ismailtasdelen/
 # Linkedin : https://www.linkedin.com/in/ismailtasdelen/
@@ -252,7 +264,7 @@ def run(shodan_host_ip,host_search,shodan_token_search,shodan_ports,shodan_dns_l
 	shodan_exploit_author,shodan_exploit_cve,shodan_exploit_msb,shodan_exploit_bid,shodan_exploit_osvdb,
 	shodan_exploit_title,shodan_exploit_description,shodan_exploit_date,shodan_exploit_code,
 	shodan_exploit_platform,shodan_exploit_port,shodansploit_exit):
-	
+
 	choice = input("Which option number : ")
 
 	if choice == 1:
@@ -281,7 +293,7 @@ def run(shodan_host_ip,host_search,shodan_token_search,shodan_ports,shodan_dns_l
 
 	elif choice == 9:
 		shodan_exploit_bid()
-	
+
 	elif choice == 10:
 		shodan_exploit_osvdb()
 
@@ -327,9 +339,32 @@ def run(shodan_host_ip,host_search,shodan_token_search,shodan_ports,shodan_dns_l
 	elif choice == 24:
 		shodansploit_exit()
 
-# batch arguments
-run(shodan_host_ip,host_search,shodan_token_search,shodan_ports,shodan_dns_lookup,shodan_count_search,
-	shodan_dns_reverse,shodan_honeyscore,shodan_profile,shodan_myip,shodan_httpheaders,shodan_api_info,
-	shodan_exploit_author,shodan_exploit_cve,shodan_exploit_msb,shodan_exploit_bid,shodan_exploit_osvdb,
-	shodan_exploit_title,shodan_exploit_description,shodan_exploit_date,shodan_exploit_code,
-	shodan_exploit_platform,shodan_exploit_port,shodansploit_exit)
+signal.signal(signal.SIGINT, signal_handler)
+while 1:
+    print searchploit_txt
+    print shodansploit_menu_txt
+    try:
+        # batch arguments
+        run(shodan_host_ip,host_search,shodan_token_search,shodan_ports,shodan_dns_lookup,shodan_count_search,
+        	shodan_dns_reverse,shodan_honeyscore,shodan_profile,shodan_myip,shodan_httpheaders,shodan_api_info,
+        	shodan_exploit_author,shodan_exploit_cve,shodan_exploit_msb,shodan_exploit_bid,shodan_exploit_osvdb,
+        	shodan_exploit_title,shodan_exploit_description,shodan_exploit_date,shodan_exploit_code,
+        	shodan_exploit_platform,shodan_exploit_port,shodansploit_exit)
+
+        pause()
+
+    except ValueError as e:
+        print('\n[✘] Error: %s' % e)
+        option = raw_input('[*] Would you like to change API Key? <Y/n>: ').lower()
+        if option.startswith('y'):
+            file = open('api.txt', 'w')
+            shodan_api = raw_input('[*] Please enter valid Shodan.io API Key: ')
+            file.write(shodan_api)
+            print('[~] File written: ./api.txt')
+            file.close()
+            print('[~] Restarting...')
+            print('')
+        else:
+            print('')
+            print('[•] Exiting...')
+            exit()
