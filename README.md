@@ -102,3 +102,15 @@ Linkedin : https://www.linkedin.com/in/ismailtasdelen/
 GitHub : https://github.com/ismailtasdelen/
 Telegram : https://t.me/ismailtasdelen/
 ```
+
+##### Donate!
+
+Support the authors:
+
+##### Paypal:
+
+https://paypal.me/ismailtsdln
+
+##### LiberaPay:
+
+<noscript><a href="https://liberapay.com/ismailtasdelen/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>
