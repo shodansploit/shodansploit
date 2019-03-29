@@ -106,7 +106,7 @@ def shodan_ports():
 	print json.dumps(parsed, indent=2, sort_keys=True)
 
 def shodan_dns_lookup():
-	hostanames = raw_input("DNS Lookup : ")
+	hostnames = raw_input("DNS Lookup : ")
 	url = "https://api.shodan.io/dns/resolve?hostnames="+ hostnames +"&key=" + shodan_api
 	request = requests.get(url)
 	txt = request.text
