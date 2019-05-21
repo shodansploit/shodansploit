@@ -14,7 +14,7 @@ searchploit_txt = """
  / __| '_ \ / _ \ / _` |/ _` | '_ \/ __| '_ \| |/ _ \| | __|
  \__ \ | | | (_) | (_| | (_| | | | \__ \ |_) | | (_) | | |_
  |___/_| |_|\___/ \__,_|\__,_|_| |_|___/ .__/|_|\___/|_|\__|
-                                       |_|            v1.1.0
+                                       |_|            v1.2.0
 	Author : Ismail Tasdelen
 	GitHub : github.com/ismailtasdelen
       Linkedin : linkedin.com/in/ismailtasdelen
