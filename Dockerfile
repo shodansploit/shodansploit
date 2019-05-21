@@ -15,4 +15,3 @@ WORKDIR /tmp/shodansploit
 RUN pip install requests
 
 ENTRYPOINT ["python", "shodansploit.py"]
-ProTip! Use n and p to navigate between commits in a pull request.
