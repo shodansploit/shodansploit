@@ -94,6 +94,17 @@ root@ismailtasdelen:~# git clone https://github.com/ismailtasdelen/shodansploit.
 root@ismailtasdelen:~# git clone https://github.com/ismailtasdelen/ismailtasdelen.git
 ```
 
+## Docker Build
+```
+$ docker run -t xshuden/shodansploit .
+```
+
+## Docker Run
+```
+$ docker run --rm -it xshuden/shodansploit
+```
+
+
 #### Contact :
 
 ```
