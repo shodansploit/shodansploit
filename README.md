@@ -49,6 +49,16 @@ root@ismailtasdelen:~# cd shodansploit
 root@ismailtasdelen:~/shodansploit# python shodansploit.py
 ```
 
+#### Docker Build
+```
+$ docker run -t xshuden/shodansploit .
+```
+
+#### Docker Run
+```
+$ docker run --rm -it xshuden/shodansploit
+```
+
 #### What's on the tool menu ?
 
 ```
