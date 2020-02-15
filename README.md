@@ -1,7 +1,9 @@
 ### shodansploit
 
-
+<p align="center">
+<img src="https://github.com/shodansploit/shodansploit/blob/master/img/shodansploit-logo.png">
 <img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg"> <img src="https://img.shields.io/github/stars/shodansploit/shodansploit?style=social"> <img src="https://img.shields.io/github/forks/shodansploit/shodansploit?style=social"> <img src="https://img.shields.io/badge/security-shodansploit-red"> <img src="https://img.shields.io/github/repo-size/shodansploit/shodansploit"> <img src="https://img.shields.io/github/license/shodansploit/shodansploit"> <img src="https://img.shields.io/github/issues/detail/author/shodansploit/shodansploit/1">
+</p>
 
 Shodan is a search engine on the internet where you can find interesting things all over the world. For example, we can find cameras, bitcoin streams, zombie computers, ports with weakness in service, SCADA systems, and more. Moreover, more specific searches are possible. As a result of the search, Shodan shows us the number of vulnerable hosts on Earth.
 
