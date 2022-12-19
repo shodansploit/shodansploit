@@ -57,7 +57,7 @@ if os.path.exists("./api.txt") and os.path.getsize("./api.txt") > 0:
         shodan_api=file.readline().rstrip('\n')
 else:
     file = open('api.txt', 'w')
-    shodan_api = raw_input('[*] Please enter a valid Shodan.io API Key: ')
+    shodan_api = input('[*] Please enter a valid Shodan.io API Key: ')
     file.write(shodan_api)
     print('[~] File written: ./api.txt')
     file.close()
@@ -67,189 +67,189 @@ def signal_handler(signal, frame):
     exit()
 
 def shodan_host_ip():
-	host_ip = raw_input("Shodan Host Search : ")
+	host_ip = input("Shodan Host Search : ")
 	url = "https://api.shodan.io/shodan/host/"+ host_ip +"?key=" + shodan_api
 	request = requests.get(url)
 	txt = request.text
 	parsed = json.loads(txt)
-	print json.dumps(parsed, indent=2, sort_keys=True)
+	print(json.dumps(parsed, indent=2, sort_keys=True))
 
 def shodan_count_search():
-	host_search = raw_input("Shodan Host Search : ")
+	host_search = input("Shodan Host Search : ")
 	url = "https://api.shodan.io/shodan/host/count?key="+ shodan_api +"&query=" + host_search
 	request = requests.get(url)
 	txt = request.text
 	parsed = json.loads(txt)
-	print json.dumps(parsed, indent=2, sort_keys=True)
+	print(json.dumps(parsed, indent=2, sort_keys=True))
 
 def host_search():
-	host_search = raw_input("Shodan Host Search : ")
+	host_search = input("Shodan Host Search : ")
 	url = "https://api.shodan.io/shodan/host/search?key="+ shodan_api +"&query=" + host_search
 	request = requests.get(url)
 	txt = request.text
 	parsed = json.loads(txt)
-	print json.dumps(parsed, indent=2, sort_keys=True)
+	print(json.dumps(parsed, indent=2, sort_keys=True))
 
 def shodan_token_search():
-	token_search = raw_input("Shodan Token Search : ")
+	token_search = input("Shodan Token Search : ")
 	url = "https://api.shodan.io/shodan/host/search/tokens?key="+ shodan_api +"&query=" + token_search
 	request = requests.get(url)
 	txt = request.text
 	parsed = json.loads(txt)
-	print json.dumps(parsed, indent=2, sort_keys=True)
+	print(json.dumps(parsed, indent=2, sort_keys=True))
 
 def shodan_ports():
 	url = "https://api.shodan.io/shodan/ports?key=" + shodan_api
 	request = requests.get(url)
 	txt = request.text
 	parsed = json.loads(txt)
-	print json.dumps(parsed, indent=2, sort_keys=True)
+	print(json.dumps(parsed, indent=2, sort_keys=True))
 
 def shodan_dns_lookup():
-	hostnames = raw_input("DNS Lookup : ")
+	hostnames = input("DNS Lookup : ")
 	url = "https://api.shodan.io/dns/resolve?hostnames="+ hostnames +"&key=" + shodan_api
 	request = requests.get(url)
 	txt = request.text
 	parsed = json.loads(txt)
-	print json.dumps(parsed, indent=2, sort_keys=True)
+	print(json.dumps(parsed, indent=2, sort_keys=True))
 
 def shodan_dns_reverse():
-	ips = raw_input("DNS Reverse : ")
+	ips = input("DNS Reverse : ")
 	url = "https://api.shodan.io/dns/reverse?ips="+ ips +"&key=" + shodan_api
 	request = requests.get(url)
 	txt = request.text
 	parsed = json.loads(txt)
-	print json.dumps(parsed, indent=2, sort_keys=True)
+	print(json.dumps(parsed, indent=2, sort_keys=True))
 
 def shodan_honeyscore():
-	honeypot = raw_input("DNS Reverse : ")
+	honeypot = input("DNS Reverse : ")
 	url = "https://api.shodan.io/labs/honeyscore/"+ ips +"&key=" + shodan_api
 	request = requests.get(url)
 	txt = request.text
 	parsed = json.loads(txt)
-	print json.dumps(parsed, indent=2, sort_keys=True)
+	print(json.dumps(parsed, indent=2, sort_keys=True))
 
 def shodan_profile():
 	url = "https://api.shodan.io/account/profile?key=" + shodan_api
 	request = requests.get(url)
 	txt = request.text
 	parsed = json.loads(txt)
-	print json.dumps(parsed, indent=2, sort_keys=True)
+	print(json.dumps(parsed, indent=2, sort_keys=True))
 
 def shodan_myip():
 	url = "https://api.shodan.io/tools/myip?key=" + shodan_api
 	request = requests.get(url)
 	txt = request.text
 	parsed = json.loads(txt)
-	print json.dumps(parsed, indent=2, sort_keys=True)
+	print(json.dumps(parsed, indent=2, sort_keys=True))
 
 def shodan_httpheaders():
 	url = "https://api.shodan.io/tools/httpheaders?key=" + shodan_api
 	request = requests.get(url)
 	txt = request.text
 	parsed = json.loads(txt)
-	print json.dumps(parsed, indent=2, sort_keys=True)
+	print(json.dumps(parsed, indent=2, sort_keys=True))
 
 def shodan_api_info():
 	url = "https://api.shodan.io/api-info?key=" + shodan_api
 	request = requests.get(url)
 	txt = request.text
 	parsed = json.loads(txt)
-	print json.dumps(parsed, indent=2, sort_keys=True)
+	print(json.dumps(parsed, indent=2, sort_keys=True))
 
 def shodan_exploit_author():
-	exploit_author = raw_input("Exploit Author : ")
+	exploit_author = input("Exploit Author : ")
 	url = "https://exploits.shodan.io/api/search?query="+ "author:" + exploit_author +"&key=" + shodan_api
 	request = requests.get(url)
 	txt = request.text
 	parsed = json.loads(txt)
-	print json.dumps(parsed, indent=2, sort_keys=True)
+	print(json.dumps(parsed, indent=2, sort_keys=True))
 
 def shodan_exploit_cve():
-	exploit_cve = raw_input("Exploit CVE : ")
+	exploit_cve = input("Exploit CVE : ")
 	url = "https://exploits.shodan.io/api/search?query="+ "cve:" + exploit_cve +"&key=" + shodan_api
 	request = requests.get(url)
 	txt = request.text
 	parsed = json.loads(txt)
-	print json.dumps(parsed, indent=2, sort_keys=True)
+	print(json.dumps(parsed, indent=2, sort_keys=True))
 
 def shodan_exploit_msb():
-	exploit_msb = raw_input("Exploit Microsoft Security Bulletin ID : ")
+	exploit_msb = input("Exploit Microsoft Security Bulletin ID : ")
 	url = "https://exploits.shodan.io/api/search?query="+ "msb:" + exploit_msb +"&key=" + shodan_api
 	request = requests.get(url)
 	txt = request.text
 	parsed = json.loads(txt)
-	print json.dumps(parsed, indent=2, sort_keys=True)
+	print(json.dumps(parsed, indent=2, sort_keys=True))
 
 def shodan_exploit_bid():
-	exploit_bid = raw_input("Exploit Bugtraq ID : ")
+	exploit_bid = input("Exploit Bugtraq ID : ")
 	url = "https://exploits.shodan.io/api/search?query="+ "bid:" + exploit_bid +"&key=" + shodan_api
 	request = requests.get(url)
 	txt = request.text
 	parsed = json.loads(txt)
-	print json.dumps(parsed, indent=2, sort_keys=True)
+	print(json.dumps(parsed, indent=2, sort_keys=True))
 
 def shodan_exploit_osvdb():
-	exploit_osvdb = raw_input("Exploit Open Source Vulnerability Database ID : ")
+	exploit_osvdb = input("Exploit Open Source Vulnerability Database ID : ")
 	url = "https://exploits.shodan.io/api/search?query="+ "osvdb:" + exploit_osvdb +"&key=" + shodan_api
 	request = requests.get(url)
 	txt = request.text
 	parsed = json.loads(txt)
-	print json.dumps(parsed, indent=2, sort_keys=True)
+	print(json.dumps(parsed, indent=2, sort_keys=True))
 
 def shodan_exploit_title():
-	exploit_title = raw_input("Exploit Title : ")
+	exploit_title = input("Exploit Title : ")
 	url = "https://exploits.shodan.io/api/search?query="+ "title:" + exploit_title +"&key=" + shodan_api
 	request = requests.get(url)
 	txt = request.text
 	parsed = json.loads(txt)
-	print json.dumps(parsed, indent=2, sort_keys=True)
+	print(json.dumps(parsed, indent=2, sort_keys=True))
 
 def shodan_exploit_description():
-	exploit_description = raw_input("Exploit Description : ")
+	exploit_description = input("Exploit Description : ")
 	url = "https://exploits.shodan.io/api/search?query="+ "description:" + exploit_description +"&key=" + shodan_api
 	request = requests.get(url)
 	txt = request.text
 	parsed = json.loads(txt)
-	print json.dumps(parsed, indent=2, sort_keys=True)
+	print(json.dumps(parsed, indent=2, sort_keys=True))
 
 def shodan_exploit_date():
-	exploit_date = raw_input("Exploit Date : ")
+	exploit_date = input("Exploit Date : ")
 	url = "https://exploits.shodan.io/api/search?query="+ "description:" + exploit_date +"&key=" + shodan_api
 	request = requests.get(url)
 	txt = request.text
 	parsed = json.loads(txt)
-	print json.dumps(parsed, indent=2, sort_keys=True)
+	print(json.dumps(parsed, indent=2, sort_keys=True))
 
 def shodan_exploit_code():
-	exploit_code = raw_input("Exploit Code : ")
+	exploit_code = input("Exploit Code : ")
 	url = "https://exploits.shodan.io/api/search?query="+ "code:" + exploit_code +"&key=" + shodan_api
 	request = requests.get(url)
 	txt = request.text
 	parsed = json.loads(txt)
-	print json.dumps(parsed, indent=2, sort_keys=True)
+	print(json.dumps(parsed, indent=2, sort_keys=True))
 
 def shodan_exploit_platform():
-	exploit_platform = raw_input("Exploit Platform : ")
+	exploit_platform = input("Exploit Platform : ")
 	url = "https://exploits.shodan.io/api/search?query="+ "platform:" + exploit_platform +"&key=" + shodan_api
 	request = requests.get(url)
 	txt = request.text
 	parsed = json.loads(txt)
-	print json.dumps(parsed, indent=2, sort_keys=True)
+	print(json.dumps(parsed, indent=2, sort_keys=True))
 
 def shodan_exploit_port():
-	exploit_platform = raw_input("Exploit Port : ")
+	exploit_platform = input("Exploit Port : ")
 	url = "https://exploits.shodan.io/api/search?query="+ "port:" + exploit_platform +"&key=" + shodan_api
 	request = requests.get(url)
 	txt = request.text
 	parsed = json.loads(txt)
-	print json.dumps(parsed, indent=2, sort_keys=True)
+	print(json.dumps(parsed, indent=2, sort_keys=True))
 
 def shodansploit_exit():
 	exit()
 
 def pause():
-    programPause = raw_input("\nPress the <ENTER> key to continue...")
+    programPause = input("\nPress the <ENTER> key to continue...")
 
 # Author : Ismail Tasdelen
 # GitHub : https://github.com/ismailtasdelen/
@@ -341,8 +341,8 @@ def run(shodan_host_ip,host_search,shodan_token_search,shodan_ports,shodan_dns_l
 
 signal.signal(signal.SIGINT, signal_handler)
 while 1:
-    print searchploit_txt
-    print shodansploit_menu_txt
+    print(searchploit_txt)
+    print(shodansploit_menu_txt)
     try:
         # batch arguments
         run(shodan_host_ip,host_search,shodan_token_search,shodan_ports,shodan_dns_lookup,shodan_count_search,
@@ -355,10 +355,10 @@ while 1:
 
     except ValueError as e:
         print('\n[✘] Error: %s' % e)
-        option = raw_input('[*] Would you like to change API Key? <Y/n>: ').lower()
+        option = input('[*] Would you like to change API Key? <Y/n>: ').lower()
         if option.startswith('y'):
             file = open('api.txt', 'w')
-            shodan_api = raw_input('[*] Please enter valid Shodan.io API Key: ')
+            shodan_api = input('[*] Please enter valid Shodan.io API Key: ')
             file.write(shodan_api)
             print('[~] File written: ./api.txt')
             file.close()
